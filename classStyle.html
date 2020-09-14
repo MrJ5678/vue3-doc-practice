@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>class&style bindings</title>
+    <script src="./vue.js"></script>
+    <style>
+      .demo {
+        width: 100%;
+        height: 50px;
+      }
+      .active {
+        background-color: orange;
+      }
+      .heavy-show {
+        font-weight: bold;
+      }
+      .huge {
+        padding: 0.2em;
+      }
+      .danger-color {
+        color: red;
+      }
+      .classOne {
+        color: gold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="example1">
+    <p class="demo" :class='{ active: isShowBgc }'></p>
+    <button @click="isShowBgc = !isShowBgc">toggle bgc</button>
+  </div>
+  <script>
+    const RenderHtmlApp = {
+      data() {
+        return {
+          isShowBgc: false
+        }
+      }
+    }
+
+    let vm = Vue.createApp(RenderHtmlApp).mount("#example1") -->
+
+    <!-- <div id="example2">
+      <p 
+        class="demo" 
+        :class="{ 'active': isShowBgc, 'heavy-show': isHeavy }"
+      >p便签内容</p>
+      <button @click="isShowBgc = !isShowBgc; isHeavy = !isHeavy">toggle bgc</button>
+    </div>
+    <script>
+      const RenderHtmlApp = {
+        data() {
+          return {
+            isShowBgc: false,
+            isHeavy: true
+          }
+        }
+      }
+  
+      let vm = Vue.createApp(RenderHtmlApp).mount("#example2") -->
+    <!-- <div id="example3">
+        <p 
+          class="demo" 
+          :class="{ ...classObject, ...colorClass }"
+        >p便签内容</p>
+        <button @click="classObject['active'] = !classObject['active'], colorClass['danger-color'] = !colorClass['danger-color']">toggle bgc</button>
+      </div>
+      <script>
+        const RenderHtmlApp = {
+          data() {
+            return {
+              classObject: {
+                active: false,
+                'heavy-show': true
+              },
+              colorClass: {
+                'danger-color': true
+              }
+            }
+          }
+        }
+    
+        let vm = Vue.createApp(RenderHtmlApp).mount("#example3") -->
+    <!-- <div id="example4">
+      <p class="demo" :class="classObject">p便签内容</p>
+      <button
+        @click="this.error = !this.error"
+      >
+        toggle bgc
+      </button>
+    </div>
+    <script>
+      const RenderHtmlApp = {
+        data() {
+          return {
+            // classObject: {
+            //   active: false,
+            //   'heavy-show': true,
+            //   'danger-color': true
+            // }
+            isActive: true,
+            error: null,
+          }
+        },
+        computed: {
+          classObject() {
+            return {
+              active: this.isActive && !this.error,
+              'heavy-show': this.error,
+              'danger-color': this.error
+            }
+          }
+        }
+      };
+
+      let vm = Vue.createApp(RenderHtmlApp).mount("#example4"); -->
+    <!-- <div id="example5">
+      <p class="demo" :class="[activeClass, errorClass]">p便签内容</p>
+      <button>toggle bgc</button>
+    </div>
+    <script>
+      const RenderHtmlApp = {
+        data() {
+          return {
+            activeClass: "active",
+            errorClass: "danger-color",
+          };
+        },
+        computed: {},
+      };
+
+      let vm = Vue.createApp(RenderHtmlApp).mount("#example5"); -->
+    <div id="example6">
+      <my-component class="baz" ></my-component>
+    </div>
+
+    <script>
+      const app = Vue.createApp({})
+      app.component("my-component", {
+        template: `
+          <p :class="$attrs.class">Hi!</p>
+          <span :style="{ display: ['-webkit-box', '-ms-flexbox', 'flex'] }">This is a child component</span>
+        `
+      })
+      let vm = app.mount("#example6")
+    </script>
+  </body>
+</html>

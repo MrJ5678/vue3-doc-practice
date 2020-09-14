@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <style>
+      demo {
+        font-family: sans-serif;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        padding: 20px 30px;
+        margin-top: 1em;
+        margin-bottom: 40px;
+        user-select: none;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="example1" class="demo">
+      <p :dynamicId="dynamicId">1</p>
+      <button :disabled="isButtonDisabled">按钮</button>
+    </div>
+
+    <script>
+      const data = {
+        dynamicId: 123,
+        isButtonDisabled: ''
+      }
+      const RenderHtmlApp = {
+        data() {
+          return data
+        },
+      };
+
+      Vue.createApp(RenderHtmlApp).mount("#example1")
+    </script> -->
+    <!-- <script>
+      let aaaaa = 2
+      let obj = {
+        aaaaa: 100,
+        fn1: function () {
+          console.log(this.aaaaa);
+        },
+        fn2: () => {
+          console.log(this.aaaaa);
+        }
+      }
+      try {
+        obj.fn1()
+        obj.fn2()
+      } catch (error) {
+        
+      }
+    </script> -->
+
+    <!-- <div id="example2">
+      <div :id="'list-' + id">{{ number + 1 }}</div>
+      <div :id="'list-' + id">{{ ok ? 'YES' : 'NO' }}</div>
+      <div :id="'list-' + id">{{message.split('').reverse().join('') }}</div>
+    </div>
+    <script>
+      const state = {
+        id: 1,
+        number: 1,
+        ok: 1,
+        message: "vue"
+      }
+
+      const RenderHtmlApp = {
+        data() {
+          return state
+        }
+      }
+      Vue.createApp(RenderHtmlApp).mount("#example2") -->
+    <!-- <div id="example3">
+        {{ msg }}
+      </div>
+      <script>
+        const state = {
+          msg: "vue"
+        }
+  
+        const RenderHtmlApp = {
+          data() {
+            return state
+          },
+          created() {
+            console.log('created excuted');
+          }
+        }
+        let vm = Vue.createApp(RenderHtmlApp).mount("#example3")
+        setTimeout(() => {
+          vm.$data.msg = "react"
+        }, 2000);
+        // Object.freeze(state)
+        Object.freeze(vm.$data) -->
+    <!-- <div id="example4">
+      <a v-bind:href="url">百度一下</a>
+      <a :[attributename]="doggyUrl">doggy搜索</a>
+      <a :[attributename]="null">doggy搜索</a>
+    </div>
+    <script>
+      // const state = {
+      //   attributeName: "href",
+      //   url: "https://www.baidu.com",
+      //   doggyUrl: "https://www.dogedoge.com/",
+      // };
+
+      const RenderHtmlApp = {
+        data() {
+          return {
+            attributename: "href",
+            url: "https://www.baidu.com",
+            doggyUrl: "https://www.dogedoge.com/",
+          };
+        },
+      };
+      Vue.createApp(RenderHtmlApp).mount("#example4"); -->
+    <!-- <div id="example5">
+      {{ fullName }}
+    </div>
+    <script>
+      const RenderHtmlApp = {
+        data() {
+          return {
+            firstName: '',
+            lastName: ''
+          }
+        },
+        computed: {
+          fullName: {
+            // getter
+            get() {
+              return this.firstName + " " + this.lastName;
+            },
+            // setter
+            set(newValue) {
+              const names = newValue.split(" ");
+              this.firstName = names[0];
+              this.lastName = names[names.length - 1];
+            },
+          },
+        },
+      };
+      let vm = Vue.createApp(RenderHtmlApp).mount("#example5");
+      vm.fullName = "J longdong"
+    </script> -->
+    <!-- <div id="watch-example">
+      <p>
+        Ask a yes/no question:
+        <input v-model="question" />
+      </p>
+      <p>{{ answer }}</p>
+
+      <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+      <script>
+        const watchExampleVM = Vue.createApp({
+          data() {
+            return {
+              question: "",
+              answer: "Questions usually contain a question mark. ;-)",
+            };
+          },
+          // watch: {
+          //   // whenever question changes, this function will run
+          //   question(newQuestion, oldQuestion) {
+          //     if (newQuestion.indexOf("?") > -1) {
+          //       this.getAnswer();
+          //     }
+          //   },
+          // },
+          methods: {
+            getAnswer() {
+              this.answer = "Thinking...";
+              axios
+                .get("https://yesno.wtf/api")
+                .then((response) => {
+                  this.answer = response.data.answer;
+                })
+                .catch((error) => {
+                  this.answer = "Error! Could not reach the API. " + error;
+                });
+            },
+          },
+        }).mount("#watch-example");
+      </script> -->
+    <div id="watch-example2">
+      <p>
+        Ask a yes/no question:
+        <input v-model="question" />
+      </p>
+      <p>{{ answer }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script>
+      const watchExampleVM = Vue.createApp({
+        data() {
+          return {
+            question: "",
+            answer: "Questions usually contain a question mark. ;-)",
+          };
+        },
+        // created() {
+        //   this.$watch("question", (newQuestion, oldQuestion) => {
+        //     if (newQuestion.indexOf("?") > -1) {
+        //       this.getAnswer();
+        //     }
+        //   });
+        // },
+        // watch: {
+        //   // whenever question changes, this function will run
+        //   question(newQuestion, oldQuestion) {
+        //     if (newQuestion.indexOf("?") > -1) {
+        //       this.getAnswer();
+        //     }
+        //   },
+        // },
+        methods: {
+          getAnswer() {
+            this.answer = "Thinking...";
+            axios
+              .get("https://yesno.wtf/api")
+              .then((response) => {
+                this.answer = response.data.answer;
+              })
+              .catch((error) => {
+                this.answer = "Error! Could not reach the API. " + error;
+              });
+          },
+        },
+      }).mount("#watch-example2");
+
+      watchExampleVM.$watch(
+        "question",
+        function () {
+         this.getAnswer();
+        }
+      );
+    </script>
+  </body>
+</html>
