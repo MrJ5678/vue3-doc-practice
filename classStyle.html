@@ -133,11 +133,11 @@
       };
 
       let vm = Vue.createApp(RenderHtmlApp).mount("#example5"); -->
-    <div id="example6">
+    <!-- <div id="example6">
       <my-component class="baz" ></my-component>
-    </div>
+    </div> -->
 
-    <script>
+    <!-- <script>
       const app = Vue.createApp({})
       app.component("my-component", {
         template: `
@@ -146,6 +146,53 @@
         `
       })
       let vm = app.mount("#example6")
+    </script> -->
+
+    <!-- <div id="example7">
+      <div :style="styleObject">vue3 class&&style</div>
+    </div>
+
+    <script>
+      const RenderHtmlApp = {
+        data() {
+          return {
+            colorConfig: "red",
+            fontSizeConfig: "13px",
+          };
+        },
+        computed: {
+          styleObject() {
+            return {
+              color: this.colorConfig,
+              fontSize: this.fontSizeConfig
+            }
+          }
+        }
+      };
+
+      let vm = Vue.createApp(RenderHtmlApp).mount("#example7");
+      // Vue.createApp(RenderHtmlApp).mount("#example7");  // 不返回vm也可以有画面
+      // console.log(vm); -->
+
+      <div id="example8">
+        <div :style="prefixStyleObject">
+          <div style="width: 100px; height: 100px; background-color: red"></div>
+        </div>
+      </div>
+
+      <script>
+        const RenderHtmlApp = {
+          data() {
+            return {
+              prefixStyleObject: {
+                display: ['-webkit-box', '-ms-flexbox', 'flex'],
+                justifyContent: "flex-end"
+              }
+            }
+          }
+        }
+        let vm = Vue.createApp(RenderHtmlApp).mount('#example8')
+      </script>
     </script>
   </body>
 </html>
